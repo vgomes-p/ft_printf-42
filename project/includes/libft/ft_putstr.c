@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 11:00:11 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/13 13:01:04 by vigomes-         ###   ########.fr       */
+/*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
+/*   Updated: 2026/05/14 11:43:22 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <libft.h>
-# include <stdarg.h>
-
-#endif
+void	ft_putstr(char *st)
+{
+	unsigned int	i;
+	
+	i = 0;
+	while (st[i] != '\0')
+	{
+		ft_putchar(st[i]);
+		i++;
+	}
+}

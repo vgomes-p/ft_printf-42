@@ -24,6 +24,8 @@ int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	ft_putchar(char c);
+void	ft_putstr(char *st);
 int		ft_atoi(const char *st);
 size_t	ft_strlen(const char *st);
 char	*ft_strdup(const char *st);

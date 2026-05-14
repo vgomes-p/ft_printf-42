@@ -6,25 +6,33 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:49:42 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/13 10:50:43 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/14 18:10:50 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	ft_printf
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -I $(H_DIR) -I $(LIBFT_DIR)
 MAKEFLAGS	=	--silent
 AR			=	ar -rcs
 RM			=	rm -rf
 
-HEADER		= get_next_line.h
+H_DIR		= includes/
+H_SRCS		= get_next_line.h
+HEADER		= $(addprefix $(H_DIR), $(H_SRCS))
 
-SRCS		= main.c get_next_line.c get_next_line_utils.c
-OBJS 		= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
+SRCS		= main.c ft_printf.c ft_utils1.c ft_utils2.c
+SRCS_H		= src/
+
 OBJ_DIR		= build/
-OBJ_M		= $(OBJ_DIR)
+OBJS		= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
-PROGRAM		=	"GNL TESTER"
+LIBFT_DIR	= includes/libft/
+LIBFT		= $(LIBFT_DIR)libft.a
+LIBFT_OBJ	= $(wildcard $(LIBFT_DIR)*.o)
+
+
+PROGRAM		=	"FT_PRINTF"
 
 DEFAULT		=	\033[0m
 RED			=	\033[1;31m
@@ -39,7 +47,7 @@ RERED		=	\033[1;7;31m
 REGREEN		=	\033[1;7;32m
 REYELLOW	=	\033[1;7;33m
 
-TOTAL_FILES = $(words $(OBJS))
+TOTAL_FILES = $(words $(OBJS) $(LIBFT_OBJ))
 COMPLETED = 0
 
 define update_progress
@@ -69,8 +77,9 @@ $(OBJ_DIR)%.o: %.c $(HEADER)
 		$(CC) $(CFLAGS) -c $< -o $@
 		@$(call update_progress)
 
-$(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+		@echo "project created as ft_printf"
 
 
 norm:
