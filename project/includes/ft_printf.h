@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:00:11 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/14 18:10:18 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/15 10:05:20 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@
 
 int		ft_printf(const char *fstr/*, ...*/);
 
-int		process_args(char arg/*, va_list args*/);
+int		handle_args(char arg/*, va_list args*/);
 
-void	insert_char(int arg);
-void	insert_string(char *arg);
+void	handle_char(int arg);
+void	handle_string(char *arg);
 void	error_message(char *error_text);
-void	insert_ptr(unsigned long int arg);
-void	insert_lhex(unsigned long int arg);
-void	insert_uhex(unsigned long int arg);
-void	insert_signed(unsigned long int arg);
-void	insert_unsigned(unsigned long int arg);
+void	handle_ptr(unsigned long int arg);
+void	handle_lhex(unsigned long int arg);
+void	handle_uhex(unsigned long int arg);
+void	handle_signed(unsigned long int arg);
+void	handle_unsigned(unsigned long int arg);
 
 #endif

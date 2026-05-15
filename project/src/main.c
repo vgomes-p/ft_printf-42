@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 18:03:31 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/14 18:08:38 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/15 09:41:37 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
-	ft_printf("teste %d, %s, %c, %x, %X, %p, %%");
+	ft_printf("teste %d, %s, %c, %x, %X, %p, %%!\n");
 }

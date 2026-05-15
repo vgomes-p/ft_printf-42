@@ -6,7 +6,7 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:49:42 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/14 18:10:50 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/15 13:00:19 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,13 @@ AR			=	ar -rcs
 RM			=	rm -rf
 
 H_DIR		= includes/
-H_SRCS		= get_next_line.h
+H_SRCS		= ft_printf.h
 HEADER		= $(addprefix $(H_DIR), $(H_SRCS))
 
 SRCS		= main.c ft_printf.c ft_utils1.c ft_utils2.c
-SRCS_H		= src/
+S_DIR		= src/
+SOURCE		= $(addprefix $(S_DIR), $(SRCS))
+
 
 OBJ_DIR		= build/
 OBJS		= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
@@ -31,6 +33,7 @@ LIBFT_DIR	= includes/libft/
 LIBFT		= $(LIBFT_DIR)libft.a
 LIBFT_OBJ	= $(wildcard $(LIBFT_DIR)*.o)
 
+ALL_FILES	= $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h $(HEADER) $(SOURCE)
 
 PROGRAM		=	"FT_PRINTF"
 
@@ -71,11 +74,14 @@ define update_progress
 endef
 
 all: $(NAME)
-$(OBJ_DIR)%.o: %.c $(HEADER)
+$(OBJ_DIR)%.o: $(S_DIR)%.c $(HEADER)
 		@clear
 		@mkdir -p $(OBJ_DIR)
 		$(CC) $(CFLAGS) -c $< -o $@
 		@$(call update_progress)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -83,7 +89,7 @@ $(NAME): $(OBJS) $(LIBFT)
 
 
 norm:
-		@for file in $(SRCS); do \
+		@for file in $(ALL_FILES); do \
 			if norminette $$file | grep -q "Error"; then \
 				echo "$(RED)❌ $$file$(DEFAULT)"; \
 			else \
@@ -96,6 +102,7 @@ norm:
 
 clean:
 		$(RM) $(OBJ_DIR)
+		@make fclean -C $(LIBFT_DIR)
 
 fclean: clean
 		$(RM) $(NAME)
@@ -103,4 +110,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm

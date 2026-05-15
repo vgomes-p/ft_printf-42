@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/14 11:43:22 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/15 10:00:58 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putstr(char *st)
 {
 	unsigned int	i;
-	
+
 	i = 0;
 	while (st[i] != '\0')
 	{

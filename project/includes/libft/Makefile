@@ -6,7 +6,7 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:54:55 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/14 11:44:01 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/15 12:54:11 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,25 +46,25 @@ REYELLOW	=	\033[1;7;33m
 TOTAL_FILES = $(words $(OBJS))
 COMPLETED = 0
 
-define update_progress
-		@if [ "$(COMPLETED)" -eq "0" ]; then \
-			clear; \
-		fi
-		@$(eval COMPLETED=$(shell echo $$(($(COMPLETED)+1))))
-		@$(eval PERCENT=$(shell echo $$(($(COMPLETED)*100/$(TOTAL_FILES)))))
-		@$(eval FILLED=$(shell echo $$(($(PERCENT)*20/100))))
-		@$(eval EMPTY=$(shell echo $$((20-$(FILLED)))))
-		@clear
-		@printf "$(YELLOW)COMPILING $(PROGRAM)! \n"
-		@for i in $$(seq 1 $(FILLED)); do printf "🟧"; done
-		@for i in $$(seq 1 $(EMPTY)); do printf "  "; done
-		@printf "%d%%$(DEFAULT)" $(PERCENT)
-		@if [ "$(COMPLETED)" -eq "$(TOTAL_FILES)" ]; then \
-			clear; \
-			echo "${GREEN}$(PROGRAM) COMPILED!"; \
-			echo "🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 100%${DEFAULT}"; \
-		fi
-endef
+# define update_progress
+# 		@if [ "$(COMPLETED)" -eq "0" ]; then \
+# 			clear; \
+# 		fi
+# 		@$(eval COMPLETED=$(shell echo $$(($(COMPLETED)+1))))
+# 		@$(eval PERCENT=$(shell echo $$(($(COMPLETED)*100/$(TOTAL_FILES)))))
+# 		@$(eval FILLED=$(shell echo $$(($(PERCENT)*20/100))))
+# 		@$(eval EMPTY=$(shell echo $$((20-$(FILLED)))))
+# 		@clear
+# 		@printf "$(YELLOW)COMPILING $(PROGRAM)! \n"
+# 		@for i in $$(seq 1 $(FILLED)); do printf "🟧"; done
+# 		@for i in $$(seq 1 $(EMPTY)); do printf "  "; done
+# 		@printf "%d%%$(DEFAULT)" $(PERCENT)
+# 		@if [ "$(COMPLETED)" -eq "$(TOTAL_FILES)" ]; then \
+# 			clear; \
+# 			echo "${GREEN}$(PROGRAM) COMPILED!"; \
+# 			echo "🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 100%${DEFAULT}"; \
+# 		fi
+# endef
 
 all: $(NAME)
 
@@ -73,7 +73,7 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 		$(CC) $(CFLAGS) -c $< -o $@
-		@$(call update_progress)
+# 		@$(call update_progress)
 
 
 norm:
