@@ -6,29 +6,32 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/15 12:52:55 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/17 16:02:46 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char *fstr/*, ...*/)
+int	ft_printf(const char *fstr, ...)
 {
 	unsigned int	i;
-	// va_list			args;
+	unsigned int	j;
+	va_list			args;
 
 	i = 0;
+	j = 0;
 	while (fstr[i] != '\0')
 	{
 		if (fstr[i] != '%')
-			ft_putchar(fstr[i]);
+		ft_putchar(fstr[i]);
 		if (fstr[i] == '%')
 		{
 			i++;
+			va_start(args, j++);
 			if (fstr[i] == '\0')
 				return (-1);
 			else
-				if (handle_args(fstr[i]/*, args*/) == 3)
+				if (handle_args(fstr[i], args) == 3)
 					return (1);
 		}
 		i++;
@@ -36,7 +39,7 @@ int	ft_printf(const char *fstr/*, ...*/)
 	return (0);
 }
 
-int	handle_args(char arg/*, va_list args*/)
+int	handle_args(char arg, va_list args)
 {
 	if (arg == '%')
 		ft_putchar('%');

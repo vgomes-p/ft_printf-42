@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:00:11 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/15 10:05:20 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/17 13:48:56 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 # include "libft.h"
 # include <stdarg.h>
 
-int		ft_printf(const char *fstr/*, ...*/);
+int		ft_printf(const char *fstr, ...);
 
-int		handle_args(char arg/*, va_list args*/);
+int		handle_args(char arg, va_list args);
 
 void	handle_char(int arg);
 void	handle_string(char *arg);

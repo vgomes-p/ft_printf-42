@@ -6,7 +6,7 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:49:42 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/15 13:00:19 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/15 17:32:22 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,23 +17,23 @@ MAKEFLAGS	=	--silent
 AR			=	ar -rcs
 RM			=	rm -rf
 
-H_DIR		= includes/
-H_SRCS		= ft_printf.h
-HEADER		= $(addprefix $(H_DIR), $(H_SRCS))
+H_DIR		=	includes/
+H_SRCS		=	ft_printf.h
+HEADER		=	$(addprefix $(H_DIR), $(H_SRCS))
 
-SRCS		= main.c ft_printf.c ft_utils1.c ft_utils2.c
-S_DIR		= src/
-SOURCE		= $(addprefix $(S_DIR), $(SRCS))
+SRCS		=	main.c ft_printf.c ft_utils1.c ft_utils2.c
+S_DIR		=	src/
+SOURCE		=	$(addprefix $(S_DIR), $(SRCS))
 
 
-OBJ_DIR		= build/
-OBJS		= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
+OBJ_DIR		=	build/
+OBJS		=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
-LIBFT_DIR	= includes/libft/
-LIBFT		= $(LIBFT_DIR)libft.a
-LIBFT_OBJ	= $(wildcard $(LIBFT_DIR)*.o)
+LIBFT_DIR	=	includes/libft/
+LIBFT		=	$(LIBFT_DIR)libft.a
+LIBFT_OBJ	=	$(wildcard $(LIBFT_DIR)*.o)
 
-ALL_FILES	= $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h $(HEADER) $(SOURCE)
+ALL_FILES	=	$(LIBFT_DIR)*.c $(LIBFT_DIR)*.h $(HEADER) $(SOURCE)
 
 PROGRAM		=	"FT_PRINTF"
 
@@ -74,14 +74,15 @@ define update_progress
 endef
 
 all: $(NAME)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
 $(OBJ_DIR)%.o: $(S_DIR)%.c $(HEADER)
 		@clear
 		@mkdir -p $(OBJ_DIR)
 		$(CC) $(CFLAGS) -c $< -o $@
 		@$(call update_progress)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -102,11 +103,11 @@ norm:
 
 clean:
 		$(RM) $(OBJ_DIR)
-		@make fclean -C $(LIBFT_DIR)
 
 fclean: clean
 		$(RM) $(NAME)
 		$(RM) norminette.log
+		@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
