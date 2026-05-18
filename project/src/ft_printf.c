@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/17 16:02:46 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/18 15:53:47 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_printf(const char *fstr, ...)
 
 	i = 0;
 	j = 0;
+	va_start(args, fstr);
 	while (fstr[i] != '\0')
 	{
 		if (fstr[i] != '%')
@@ -27,7 +28,6 @@ int	ft_printf(const char *fstr, ...)
 		if (fstr[i] == '%')
 		{
 			i++;
-			va_start(args, j++);
 			if (fstr[i] == '\0')
 				return (-1);
 			else
