@@ -6,38 +6,46 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:37:21 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/15 10:05:36 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/21 16:45:15 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	handle_signed(unsigned long int arg)
+void	handle_signed(va_list args)
 {
-	(void)arg;
-	ft_putstr("'signed inserted'");
+	signed long int	arg;
+
+	arg = va_arg(args, signed long int);
+	ft_putstr(ft_itoaf(arg));
 }
 
-void	handle_char(int arg)
+void	handle_char(va_list args)
 {
-	(void)arg;
-	ft_putstr("'char inserted'");
+	char	arg;
+
+	arg = va_arg(args, char);
+	ft_putchar(arg);
 }
 
-void	handle_string(char *arg)
+void	handle_string(va_list args)
 {
-	(void)arg;
-	ft_putstr("'string inserted'");
+	char	*arg;
+
+	arg = va_arg(args, char *);
+	ft_putstr(arg);
 }
 
-void	handle_unsigned(unsigned long int arg)
+void	handle_unsigned(va_list args)
 {
-	(void)arg;
-	ft_putstr("'unsigned inserted'");
+	unsigned long int	arg;
+
+	arg = va_arg(args, unsigned long int);
+	ft_putnbr(arg);
 }
 
-void	handle_ptr(unsigned long int arg)
+void	handle_ptr(va_list args)
 {
-	(void)arg;
+	(void)args;
 	ft_putstr("'pointer inserted'");
 }

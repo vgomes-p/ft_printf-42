@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/18 15:53:47 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/21 16:25:30 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 int	ft_printf(const char *fstr, ...)
 {
 	unsigned int	i;
-	unsigned int	j;
 	va_list			args;
 
 	i = 0;
-	j = 0;
 	va_start(args, fstr);
 	while (fstr[i] != '\0')
 	{
 		if (fstr[i] != '%')
-		ft_putchar(fstr[i]);
-		if (fstr[i] == '%')
+			ft_putchar(fstr[i]);
+		else
 		{
 			i++;
 			if (fstr[i] == '\0')
@@ -36,6 +34,7 @@ int	ft_printf(const char *fstr, ...)
 		}
 		i++;
 	}
+	va_end(args);
 	return (0);
 }
 
@@ -44,19 +43,19 @@ int	handle_args(char arg, va_list args)
 	if (arg == '%')
 		ft_putchar('%');
 	else if (arg == 'i' | arg == 'd')
-		handle_signed(42);
+		handle_signed(args);
 	else if (arg == 'c')
-		handle_char('c');
+		handle_char(args);
 	else if (arg == 's')
-		handle_string("string");
+		handle_string(args);
 	else if (arg == 'u')
-		handle_unsigned(420000000000000);
+		handle_unsigned(args);
 	else if (arg == 'p')
-		handle_ptr(42);
+		handle_ptr(args);
 	else if (arg == 'x')
-		handle_lhex(42);
+		handle_lhex(args);
 	else if (arg == 'X')
-		handle_uhex(42);
+		handle_uhex(args);
 	else
 	{
 		error_message("error_message");
