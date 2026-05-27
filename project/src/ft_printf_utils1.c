@@ -6,58 +6,67 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:37:21 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:23:42 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:24:30 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	handle_char(va_list *args)
+int	handle_char(va_list *args)
 {
 	char	arg;
 
 	arg = (char)va_arg(*args, int);
-	ft_putchar(arg);
+	return (ft_putchar(arg));
 }
 
-void	handle_string(va_list *args)
+int	handle_string(va_list *args)
 {
 	char	*arg;
 
 	arg = va_arg(*args, char *);
 	if (!arg)
 		arg = "(null)";
-	ft_putstr(arg);
+	return (ft_putstr(arg));
 }
 
-void	handle_int(va_list *args)
+int	handle_int(va_list *args)
 {
 	int	arg;
+	int	cnt;
 
+	cnt = 0;
 	arg = va_arg(*args, int);
-	ft_putnbr(arg);
+	cnt = ft_putstr(ft_itoa(arg));
+	return (cnt);
 }
 
-void	handle_unsigned_int(va_list *args)
+int	handle_unsigned_int(va_list *args)
 {
 	unsigned int	arg;
+	int				cnt;
 
+	cnt = 0;
 	arg = va_arg(*args, unsigned int);
-	ft_putunbr(arg);
+	cnt = ft_putstr(ft_uitoa(arg));
+	return (cnt);
 }
 
-void	handle_ptr(va_list *args)
+int	handle_ptr(va_list *args)
 {
 	void			*arg;
 	unsigned long	narg;
+	int				cnt;
 
+	cnt = 0;
 	arg = va_arg(*args, void *);
 	if (arg)
 	{
 		narg = (unsigned long)arg;
-		ft_putstr("0x");
-		ft_puthexdec("0123456789abcdef", narg);
-		return ;
+		cnt += ft_putstr("0x");
+		cnt += ft_puthexdec("0123456789abcdef", narg);
+		return (cnt);
 	}
-	ft_putstr("(nil)");
+	cnt = ft_putstr("(nil)");
+	return (cnt);
 }

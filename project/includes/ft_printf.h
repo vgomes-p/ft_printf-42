@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:00:11 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:34:16 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:08:17 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@
 int		ft_printf(const char *fstr, ...);
 
 int		handle_specifiers(char arg, va_list *args);
-void	handle_char(va_list *args);
-void	handle_string(va_list *args);
-void	handle_ptr(va_list *args);
-void	handle_lhex(va_list *args);
-void	handle_uhex(va_list *args);
-void	handle_int(va_list *args);
-void	handle_unsigned_int(va_list *args);
+int		handle_char(va_list *args);
+int		handle_string(va_list *args);
+int		handle_ptr(va_list *args);
+int		handle_lhex(va_list *args);
+int		handle_uhex(va_list *args);
+int		handle_int(va_list *args);
+int		handle_unsigned_int(va_list *args);
 
 void	error_message(char *error_text);
 void	invalid_argument(char iarg, const char *fstr, unsigned long int i);
 int		validate_eol(const char c);
+int		validate_indentifier(const char *fstr);
 int		validate_string(const char *fstr);
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 11:39:39 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/15 10:00:49 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 17:52:03 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

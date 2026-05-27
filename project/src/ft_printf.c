@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:08:45 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:41:58 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,50 @@
 
 int	ft_printf(const char *fstr, ...)
 {
-	unsigned int	i;
-	va_list			args;
+	int		i;
+	int		cnt;
+	va_list	args;
 
 	i = 0;
+	cnt = 0;
 	va_start(args, fstr);
 	if (validate_string(fstr))
 		return (-1);
 	while (fstr[i] != '\0')
 	{
 		if (fstr[i] != '%')
-			ft_putchar(fstr[i]);
+			cnt += ft_putchar(fstr[i]);
 		else
 		{
 			i++;
-			if (handle_specifiers(fstr[i], &args))
-				return (1);
+			cnt += handle_specifiers(fstr[i], &args);
 		}
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (cnt);
 }
 
 int	handle_specifiers(char arg, va_list *args)
 {
+	int	cnt;
+
+	cnt = 0;
 	if (arg == '%')
-		ft_putchar('%');
+		return (ft_putchar('%'));
 	else if (arg == 'i' || arg == 'd')
-		handle_int(args);
+		cnt = handle_int(args);
 	else if (arg == 'u')
-		handle_unsigned_int(args);
+		cnt = handle_unsigned_int(args);
 	else if (arg == 'c')
-		handle_char(args);
+		cnt = handle_char(args);
 	else if (arg == 's')
-		handle_string(args);
+		cnt = handle_string(args);
 	else if (arg == 'p')
-		handle_ptr(args);
+		cnt = handle_ptr(args);
 	else if (arg == 'x')
-		handle_lhex(args);
+		cnt = handle_lhex(args);
 	else if (arg == 'X')
-		handle_uhex(args);
-	else
-	{
-		error_message("invalid argument type!");
-		return (1);
-	}
-	return (0);
+		cnt = handle_uhex(args);
+	return (cnt);
 }

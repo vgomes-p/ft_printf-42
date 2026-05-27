@@ -6,18 +6,18 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:54:55 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/26 15:58:05 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/27 18:06:38 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	libft.a
-CC			:=	cc
-CFLAGS		:=	-Wall -Wextra -Werror
-MAKEFLAGS	:=	--silent
-AR			:=	ar -rcs
-RM			:=	rm -rf
+NAME		=	libft.a
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+MAKEFLAGS	=	--silent
+AR			=	ar -rcs
+RM			=	rm -rf
 
-SRCS		:= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+SRCS		=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 			ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
 			ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c \
 			ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c \

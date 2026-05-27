@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:47:00 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:35:06 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 16:07:28 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	validate_eol(const char c)
 	return (0);
 }
 
-int	validate_string(const char *fstr)
+int	validate_indentifier(const char *fstr)
 {
 	unsigned long int	i;
 
@@ -76,5 +76,17 @@ int	validate_string(const char *fstr)
 			}
 		}
 	}
+	return (0);
+}
+
+int	validate_string(const char *fstr)
+{
+	if (!fstr)
+	{
+		ft_putstr(RED "error: " DEFAULT "null string is not accepted!\n");
+		return (1);
+	}
+	if (validate_indentifier(fstr))
+		return (1);
 	return (0);
 }
