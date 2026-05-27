@@ -19,7 +19,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	alloc = NULL;
 	sz = nmemb * size;
-	if (nmemb == 0 || size == 0 || sz / nmemb != size)
+	if (nmemb == 0 || size == 0)
+		return (ft_strdup(""));
+	if (sz / nmemb != size)
 		return (NULL);
 	alloc = malloc(sz);
 	if (alloc)

@@ -6,7 +6,7 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:49:42 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/15 17:32:22 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/26 13:48:11 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ H_DIR		=	includes/
 H_SRCS		=	ft_printf.h
 HEADER		=	$(addprefix $(H_DIR), $(H_SRCS))
 
-SRCS		=	main.c ft_printf.c ft_utils1.c ft_utils2.c
+SRCS		=	main.c ft_printf.c ft_printf_validations.c \
+				ft_printf_utils1.c ft_printf_utils2.c
 S_DIR		=	src/
 SOURCE		=	$(addprefix $(S_DIR), $(SRCS))
 

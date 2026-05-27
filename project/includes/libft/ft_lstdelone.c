@@ -1,43 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:17:05 by vigomes-         ###   ########.fr       */
+/*   Created: 2026/05/22 10:07:06 by vigomes-          #+#    #+#             */
+/*   Updated: 2026/05/25 11:02:26 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *st)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	unsigned long int	i;
-
-	if (!st)
-		return ;
-	i = 0;
-	while (st[i] != '\0')
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
-}
-
-void	ft_putstr_nl(char *st)
-{
-	unsigned long int	i;
-	unsigned long int	st_len;
-
-	if (!st)
-		return ;
-	i = 0;
-	st_len = ft_strlen(st);
-	while (i < st_len - 1)
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
+	del(lst->content);
+	free(lst);
 }

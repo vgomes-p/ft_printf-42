@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:17:05 by vigomes-         ###   ########.fr       */
+/*   Created: 2026/05/22 10:07:10 by vigomes-          #+#    #+#             */
+/*   Updated: 2026/05/24 19:16:04 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *st)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	unsigned long int	i;
+	t_list	*node;
+	t_list	*temp;
 
-	if (!st)
-		return ;
-	i = 0;
-	while (st[i] != '\0')
+	node = *lst;
+	while (node)
 	{
-		ft_putchar(st[i]);
-		i++;
+		del(node->content);
+		temp = node->next;
+		free(node);
+		node = temp;
 	}
-}
-
-void	ft_putstr_nl(char *st)
-{
-	unsigned long int	i;
-	unsigned long int	st_len;
-
-	if (!st)
-		return ;
-	i = 0;
-	st_len = ft_strlen(st);
-	while (i < st_len - 1)
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
+	*lst = node;
 }

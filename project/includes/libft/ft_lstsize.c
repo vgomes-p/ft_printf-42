@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:17:05 by vigomes-         ###   ########.fr       */
+/*   Created: 2026/05/22 10:06:56 by vigomes-          #+#    #+#             */
+/*   Updated: 2026/05/23 13:48:13 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *st)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned long int	i;
+	int	size;
 
-	if (!st)
-		return ;
-	i = 0;
-	while (st[i] != '\0')
+	size = 0;
+	while (lst)
 	{
-		ft_putchar(st[i]);
-		i++;
+		lst = lst->next;
+		size++;
 	}
-}
-
-void	ft_putstr_nl(char *st)
-{
-	unsigned long int	i;
-	unsigned long int	st_len;
-
-	if (!st)
-		return ;
-	i = 0;
-	st_len = ft_strlen(st);
-	while (i < st_len - 1)
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
+	return (size);
 }

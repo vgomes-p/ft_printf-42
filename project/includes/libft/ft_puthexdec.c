@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_puthexdec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 11:40:27 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/26 16:17:05 by vigomes-         ###   ########.fr       */
+/*   Created: 2026/05/26 15:32:49 by vigomes-          #+#    #+#             */
+/*   Updated: 2026/05/26 16:10:08 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *st)
+/* hex base: 0123456789abcdef */
+void	ft_puthexdec(char *hex, unsigned long int nbr)
 {
 	unsigned long int	i;
+	unsigned long int	hexlen;
 
-	if (!st)
-		return ;
-	i = 0;
-	while (st[i] != '\0')
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
-}
-
-void	ft_putstr_nl(char *st)
-{
-	unsigned long int	i;
-	unsigned long int	st_len;
-
-	if (!st)
-		return ;
-	i = 0;
-	st_len = ft_strlen(st);
-	while (i < st_len - 1)
-	{
-		ft_putchar(st[i]);
-		i++;
-	}
+	hexlen = ft_strlen(hex);
+	if (nbr >= hexlen)
+		ft_puthexdec(hex, nbr / hexlen);
+	i = nbr % hexlen;
+	ft_putchar(hex[i]);
 }
