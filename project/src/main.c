@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vgomes-p <vgomes-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 12:50:46 by thfernan          #+#    #+#             */
-/*   Updated: 2026/05/27 18:45:02 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/27 21:55:17 by vgomes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	main(void)
 }
 */
 
-/*
+
 int	main(void)
 {
 	int				c = 'l';
@@ -189,7 +189,7 @@ int	main(void)
     printf("Retorno O: %d, Retorno M: %d\n\n", size_o, size_m);
 	return (0);
 }
-*/
+
 
 /*
 int	main(void)

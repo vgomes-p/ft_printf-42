@@ -64,14 +64,10 @@ char	*ft_uitoa(unsigned int nb)
 	st = ft_calloc(len + 1, sizeof(char));
 	if (!st)
 		return (NULL);
-	if (abs < 0)
-		abs *= -1;
 	while (len > 0)
 	{
 		st[--len] = abs % 10 + '0';
 		abs /= 10;
 	}
-	if (nb < 0)
-		st[0] = '-';
 	return (st);
 }
