@@ -55,8 +55,8 @@ char	*ft_itoa(int nb)
 
 char	*ft_uitoa(unsigned int nb)
 {
-	long int	abs;
-	long int	len;
+	unsigned int	abs;
+	unsigned int	len;
 	char		*st;
 
 	abs = nb;
