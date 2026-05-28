@@ -6,11 +6,11 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:37:21 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/27 18:24:30 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:37:02 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	handle_char(va_list *args)
 {
@@ -32,12 +32,15 @@ int	handle_string(va_list *args)
 
 int	handle_int(va_list *args)
 {
-	int	arg;
-	int	cnt;
+	int		arg;
+	int		cnt;
+	char	*a;
 
 	cnt = 0;
 	arg = va_arg(*args, int);
-	cnt = ft_putstr(ft_itoa(arg));
+	a = ft_itoa(arg);
+	cnt = ft_putstr(a);
+	free(a);
 	return (cnt);
 }
 
@@ -45,10 +48,13 @@ int	handle_unsigned_int(va_list *args)
 {
 	unsigned int	arg;
 	int				cnt;
+	char			*a;
 
 	cnt = 0;
 	arg = va_arg(*args, unsigned int);
-	cnt = ft_putstr(ft_uitoa(arg));
+	a = ft_uitoa(arg);
+	cnt = ft_putstr(a);
+	free(a);
 	return (cnt);
 }
 

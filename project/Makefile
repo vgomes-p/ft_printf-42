@@ -6,37 +6,31 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:49:42 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/27 15:38:00 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/28 16:08:28 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ft_printf
+NAME		=	libftprintf.a
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -I $(H_DIR) -I $(LIBFT_DIR)
 MAKEFLAGS	=	--silent
 AR			=	ar -rcs
 RM			=	rm -rf
 
-H_DIR		=	includes/
-H_SRCS		=	ft_printf.h
-HEADER		=	$(addprefix $(H_DIR), $(H_SRCS))
-
-SRCS		=	main.c ft_printf.c ft_printf_validations.c \
-				ft_printf_utils1.c ft_printf_utils2.c
-S_DIR		=	src/
-SOURCE		=	$(addprefix $(S_DIR), $(SRCS))
-
-
-OBJ_DIR		=	build/
-OBJS		=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
-
+H_DIR		= includes/
 LIBFT_DIR	=	includes/libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
-LIBFT_OBJ	=	$(wildcard $(LIBFT_DIR)*.o)
 
-ALL_FILES	=	$(LIBFT_DIR)*.c $(LIBFT_DIR)*.h $(HEADER) $(SOURCE)
+CFLAGS		=	-Wall -Wextra -Werror -I $(H_DIR) -I $(LIBFT_DIR)
 
-PROGRAM		=	"FT_PRINTF"
+SRCS		=	ft_printf.c ft_printf_validations.c \
+				ft_printf_utils1.c ft_printf_utils2.c
+OBJS		=	$(SRCS:.c=.o)
+
+# LIBFT_OBJ	=	$(wildcard $(LIBFT_DIR)*.o)
+
+ALL_FILES	=	$(LIBFT_DIR)*.c $(LIBFT_DIR)*.h $(SRCS)
+
+PROGRAM		=	"LIBFT/FT_PRINTF"
 
 DEFAULT		=	\033[0m
 RED			=	\033[1;31m
@@ -74,21 +68,19 @@ define update_progress
 		fi
 endef
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
+
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJ_DIR)%.o: $(S_DIR)%.c $(HEADER)
-		@clear
-		@mkdir -p $(OBJ_DIR)
+$(NAME): $(LIBFT) $(OBJS)
+		cp $(LIBFT) $(NAME)
+		$(AR) $(NAME) $(OBJS)
+		@echo "project created as libftprintf.a"
+
+%.o: %.c
 		$(CC) $(CFLAGS) -c $< -o $@
 		@$(call update_progress)
-
-
-$(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-		@echo "project created as ft_printf"
-
 
 norm:
 		@for file in $(ALL_FILES); do \
@@ -102,12 +94,17 @@ norm:
 		@echo "$(CYAN)🆗 Norminette check complete! 🆗$(DEFAULT)"
 		@echo "$(CYAN)Norminette report saved in norminette.log!$(DEFAULT)"
 
+test:
+		$(CC) $(CFLAGS) main.c libftprintf.a
+		@echo "tester created as a.out"
+
 clean:
-		$(RM) $(OBJ_DIR)
+		$(RM) $(OBJS)
 
 fclean: clean
 		$(RM) $(NAME)
 		$(RM) norminette.log
+		$(RM) a.out
 		@make fclean -C $(LIBFT_DIR)
 
 re: fclean all

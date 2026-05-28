@@ -6,11 +6,11 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:57:50 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/27 18:22:50 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:08:59 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	handle_lhex(va_list *args)
 {

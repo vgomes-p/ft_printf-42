@@ -6,7 +6,7 @@
 #    By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/13 10:54:55 by vigomes-          #+#    #+#              #
-#    Updated: 2026/05/27 18:06:38 by vigomes-         ###   ########.fr        #
+#    Updated: 2026/05/28 13:49:36 by vigomes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS		=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 			ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-			ft_lstmap.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_puthexdec.c
+			ft_lstmap.c ft_putchar.c ft_putstr.c ft_puthexdec.c
 
 OBJS := $(SRCS:.c=.o)
 

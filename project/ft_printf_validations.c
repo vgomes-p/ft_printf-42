@@ -6,19 +6,19 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:47:00 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/27 16:07:28 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:54:12 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
-void	error_message(char *error_text)
+static void	error_message(char *error_text)
 {
 	ft_putstr(RED "Error: " DEFAULT);
 	ft_putstr(error_text);
 }
 
-void	invalid_argument(char iarg, const char *fstr, unsigned long int i)
+static void	invalid_argument(char iarg, const char *fstr, unsigned long int i)
 {
 	unsigned long int	j;
 
@@ -36,7 +36,7 @@ void	invalid_argument(char iarg, const char *fstr, unsigned long int i)
 	ft_putstr("' is not a valid argument type!\n" DEFAULT);
 }
 
-int	validate_eol(const char c)
+static int	validate_eol(const char c)
 {
 	if (c == '\0')
 	{
@@ -51,7 +51,7 @@ int	validate_eol(const char c)
 	return (0);
 }
 
-int	validate_indentifier(const char *fstr)
+static int	validate_indentifier(const char *fstr)
 {
 	unsigned long int	i;
 

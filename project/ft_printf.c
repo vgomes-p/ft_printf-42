@@ -6,11 +6,35 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/27 18:41:58 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:55:26 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+
+static int	handle_specifiers(char arg, va_list *args)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (arg == '%')
+		return (ft_putchar('%'));
+	else if (arg == 'i' || arg == 'd')
+		cnt = handle_int(args);
+	else if (arg == 'u')
+		cnt = handle_unsigned_int(args);
+	else if (arg == 'c')
+		cnt = handle_char(args);
+	else if (arg == 's')
+		cnt = handle_string(args);
+	else if (arg == 'p')
+		cnt = handle_ptr(args);
+	else if (arg == 'x')
+		cnt = handle_lhex(args);
+	else if (arg == 'X')
+		cnt = handle_uhex(args);
+	return (cnt);
+}
 
 int	ft_printf(const char *fstr, ...)
 {
@@ -35,29 +59,5 @@ int	ft_printf(const char *fstr, ...)
 		i++;
 	}
 	va_end(args);
-	return (cnt);
-}
-
-int	handle_specifiers(char arg, va_list *args)
-{
-	int	cnt;
-
-	cnt = 0;
-	if (arg == '%')
-		return (ft_putchar('%'));
-	else if (arg == 'i' || arg == 'd')
-		cnt = handle_int(args);
-	else if (arg == 'u')
-		cnt = handle_unsigned_int(args);
-	else if (arg == 'c')
-		cnt = handle_char(args);
-	else if (arg == 's')
-		cnt = handle_string(args);
-	else if (arg == 'p')
-		cnt = handle_ptr(args);
-	else if (arg == 'x')
-		cnt = handle_lhex(args);
-	else if (arg == 'X')
-		cnt = handle_uhex(args);
 	return (cnt);
 }
