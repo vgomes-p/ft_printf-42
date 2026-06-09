@@ -12,24 +12,6 @@
 
 #include "libft.h"
 
-static int	ft_intlen(long int nb)
-{
-	int	i;
-
-	i = 0;
-	if (nb <= 0)
-	{
-		i++;
-		nb *= -1;
-	}
-	while (nb > 0)
-	{
-		i++;
-		nb /= 10;
-	}
-	return (i);
-}
-
 char	*ft_itoa(int nb)
 {
 	long int	abs;
@@ -57,7 +39,7 @@ char	*ft_uitoa(unsigned int nb)
 {
 	unsigned int	abs;
 	unsigned int	len;
-	char		*st;
+	char			*st;
 
 	abs = nb;
 	len = ft_intlen(abs);

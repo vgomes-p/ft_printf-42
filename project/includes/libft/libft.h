@@ -27,6 +27,7 @@ int		ft_putstr(char *st);
 int		ft_putstr_nl(char *st);
 int		ft_puthexdec(char *hex, unsigned long int nbr);
 char	*ft_uitoa(unsigned int nb);
+int		ft_intlen(long int nb);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

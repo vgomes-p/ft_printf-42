@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 10:07:10 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/24 19:16:04 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/06/01 14:34:01 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*node;
 	t_list	*temp;
 
+	if (!lst)
+		return ;
 	node = *lst;
 	while (node)
 	{

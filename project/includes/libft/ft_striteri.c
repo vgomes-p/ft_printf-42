@@ -16,7 +16,10 @@ void	ft_striteri(char *st, void (*ftn)(unsigned int, char*))
 {
 	int	i;
 
-	i = -1;
-	while (st[++i])
+	i = 0;
+	while (st[i] != '\0')
+	{
 		ftn(i, &st[i]);
+		i++;
+	}
 }

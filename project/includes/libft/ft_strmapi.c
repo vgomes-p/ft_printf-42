@@ -19,12 +19,15 @@ char	*ft_strmapi(char const *st, char (*ftn)(unsigned int, char))
 
 	if (!st || !ftn)
 		return (NULL);
-	i = -1;
+	i = 0;
 	res = ft_calloc(ft_strlen(st) + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	while (st[++i])
+	while (st[i] != '\0')
+	{
 		res[i] = ftn(i, st[i]);
+		i++;
+	}
 	res[i] = '\0';
 	return (res);
 }
