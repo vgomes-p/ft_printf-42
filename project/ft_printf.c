@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 11:02:36 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/05/28 14:55:26 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/06/14 15:27:46 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *fstr, ...)
 	i = 0;
 	cnt = 0;
 	va_start(args, fstr);
-	if (validate_string(fstr))
+	if (!validate_string(fstr))
 		return (-1);
 	while (fstr[i] != '\0')
 	{

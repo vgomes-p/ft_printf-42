@@ -1,6 +1,6 @@
 *This project has been created as part
 of the 42 curriculum by vigomes-*
-![ft_printf header](src/header.png)
+<!-- ![ft_printf header](src/header.png) -->
 # ft_printf (because ft_putnbr() and ft_putstr() aren’t enough)
 
 <!-- Description -->
@@ -10,6 +10,19 @@ of the 42 curriculum by vigomes-*
 For this project, I was allowed to you variadic functions (`va_list`, `va_start`, `va_arg` and `va_end`) and my `libft` (in which i implemented `ft_putstr`, `ft_putchar`, `ft_puthexdec`, and `ft_uitoa`)
 
 <!-- ![ft_printf validation](src/validation.png) -->
+### Project structure
+```txt
+printf/
+├─ includes/
+│  └─ libft/
+├─ ft_printf_utils1.c
+├─ ft_printf_utils2.c
+├─ ft_printf_validations.c
+├─ ft_printf.c
+├─ ft_printf.h
+├─ Makefile
+ └─ README.md
+```
 
 ## INTRODUCTION | How to use
 <!-- Instructions -->
@@ -68,32 +81,16 @@ fclean: clean
 ```bash
 make
 ```
-#### 2.2 - create a main file to test
+#### 2.2 - create test file
 ```bash
-touch main.c
-```
-```c
-/*pass it in the main.c*/
-
-#include "ft_printf.h"
-
-int main(void)
-{
-	int	ret;
-
-	ret = ft_printf("This is a %s!\n%d is a great school!\n", "test for ft_printf", 42);
-	return (ret);
-}
-```
-#### 2.3 - compile the main
-```bash
-cc -Wall -Wextra -Werror main.c libftprintf.a
+make test
 ```
 
-#### 2.4 - run it
+#### 2.3 - run it
 ```bash
 ./a.out
 ```
+> try flags `--b`, `--t`, `--g` or `--a`
 
 ## ALGORITHMS AND DATA STRUCT CHOISES
 <!-- Algorithms selection explanation and justification -->

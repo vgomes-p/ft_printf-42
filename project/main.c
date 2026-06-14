@@ -6,7 +6,7 @@
 /*   By: vigomes- <vigomes-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:31:03 by vigomes-          #+#    #+#             */
-/*   Updated: 2026/06/07 22:27:13 by vigomes-         ###   ########.fr       */
+/*   Updated: 2026/06/14 15:25:32 by vigomes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,17 +161,34 @@ void	test_percents(void)
  
 void	test_errors(void)
 {
+	int	ret;
+
+	ret = 0;
 	printf("ERRORS\n");
 	printf("ft_printf(NULL): ");
-	ft_printf(NULL);
-	printf("done\n\n");
+	ret = ft_printf(NULL);
+	if (ret < 0)
+		printf("done\n");
+	else
+		printf("failed\n");
 	printf("invalid specifier (%%g): ");
-	ft_printf("%g\n");
+	ret = ft_printf("%g\n");
+	if (ret < 0)
+		printf("done\n");
+	else
+		printf("failed\n");
 	printf("eol (%%\\n): ");
-	ft_printf("%\n");
+	ret = ft_printf("%\n");
+	if (ret < 0)
+		printf("done\n");
+	else
+		printf("failed\n");
 	printf("eos (%%): ");
-	ft_printf("%");
-	printf("\ndone\n\n");
+	ret = ft_printf("%");
+	if (ret < 0)
+		printf("done\n");
+	else
+		printf("failed\n");
 }
  
 void	test_edges(void)
