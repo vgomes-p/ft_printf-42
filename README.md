@@ -1,6 +1,6 @@
 *This project has been created as part
 of the 42 curriculum by vigomes-*
-<!-- ![ft_printf header](src/header.png) -->
+![ft_printf header](src/header.png)
 # ft_printf (because ft_putnbr() and ft_putstr() aren’t enough)
 
 <!-- Description -->
@@ -9,7 +9,7 @@ of the 42 curriculum by vigomes-*
 
 For this project, I was allowed to you variadic functions (`va_list`, `va_start`, `va_arg` and `va_end`) and my `libft` (in which i implemented `ft_putstr`, `ft_putchar`, `ft_puthexdec`, and `ft_uitoa`)
 
-<!-- ![ft_printf validation](src/validation.png) -->
+![ft_printf validation](src/validation.png)
 ### Project structure
 ```txt
 printf/
